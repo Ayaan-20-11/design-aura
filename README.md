@@ -5,7 +5,7 @@ https://ayaan-20-11.github.io/design-aura/
 
 ## Screenshot
 
-![Design Aura Homepage](images/screenshot.jpeg)
+![Design Aura Homepage](images/screenshot.png)
 
 ## Features
 
