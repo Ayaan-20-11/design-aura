@@ -1,0 +1,589 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Aura | Bakery & Restaurant Website Designer in India</title>
+<meta name="google-site-verification" content="haXeqHu7w0ZBy4O79iP46sWYAP8pM6embezre1kWEHg" />
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== LOADER ===== */
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#050510;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.loader-logo{
+width:120px;
+animation:pulse 2s infinite;
+}
+
+.loader-circle{
+position:absolute;
+width:200px;
+height:200px;
+border-radius:50%;
+border:2px solid rgba(255,0,150,0.4);
+box-shadow:0 0 60px #ff2e63;
+animation:spin 3s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.15);}
+}
+
+.progress-bar{
+width:220px;
+height:6px;
+background:#222;
+border-radius:10px;
+margin-top:20px;
+overflow:hidden;
+}
+
+#progress{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#ff2e63,#7afcff);
+}
+
+#percent{
+color:#ff2e63;
+margin-top:10px;
+}
+
+/* ===== SERVICES ===== */
+.services{
+padding:6rem 8vw;
+background:#050510;
+color:white;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:2rem;
+}
+
+.service-card{
+background:#111;
+padding:2rem;
+border-radius:20px;
+transition:.4s;
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px #ff2e63;
+}
+
+/* ===== MAIN STYLES ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+body{overflow-x:hidden;background:#000;}
+
+header{
+position:fixed;
+width:100%;
+top:0;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(12px);
+z-index:1000;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:1rem 4vw;
+}
+
+.logoBox{display:flex;align-items:center;gap:12px;}
+
+.logoWrapper{
+background:rgba(255,255,255,0.95);
+padding:6px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+
+.logoWrapper img{height:46px;}
+
+.logoText{
+color:white;
+font-size:1.5rem;
+font-weight:600;
+}
+
+.nav-links{
+display:flex;
+gap:2rem;
+list-style:none;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+position:relative;
+overflow:hidden;
+
+/* premium gradient */
+background: radial-gradient(circle at 30% 30%, #1a1a2e, #000),
+linear-gradient(120deg, #ff7eb3, #7afcff, #ffd86b);
+background-blend-mode: overlay;
+}
+.hero::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background: radial-gradient(circle,#ff2e63 0%,transparent 40%);
+opacity:0.2;
+animation:moveBg 12s linear infinite;
+}
+.hero p{
+font-size:1.2rem;
+opacity:0.9;
+animation:fadeUp 1.5s ease;
+}
+@keyframes moveBg{
+0%{transform:translate(-20%,-20%)}
+50%{transform:translate(20%,20%)}
+100%{transform:translate(-20%,-20%)}
+}
+
+/* 👇 ADD THIS BELOW */
+@keyframes fadeUp{
+0%{opacity:0;transform:translateY(40px)}
+100%{opacity:1;transform:translateY(0)}
+}
+.heroBrand{
+font-size:5.5rem;
+font-weight:900;
+letter-spacing:6px;
+background:linear-gradient(90deg,#ff7eb3,#7afcff,#ffd86b);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 30px rgba(255,255,255,0.2);
+margin-bottom:25px;
+animation:fadeUp 1.2s ease;
+}
+
+.float span{
+position:absolute;
+font-size:32px;
+animation:rise 9s linear infinite;
+}
+
+.float span:nth-child(1){left:8%;}
+.float span:nth-child(2){left:18%;}
+.float span:nth-child(3){left:35%;}
+.float span:nth-child(4){left:55%;}
+.float span:nth-child(5){left:75%;}
+.float span:nth-child(6){left:90%;}
+
+@keyframes rise{
+0%{bottom:-60px;}
+100%{bottom:110%;}
+}
+
+.cta{
+background:linear-gradient(45deg,#ff7eb3,#ff2e63);
+padding:16px 50px;
+border-radius:40px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+display:inline-block;
+margin-top:25px;
+box-shadow:0 0 20px rgba(255,46,99,0.5);
+transition:all .3s ease;
+}
+
+.cta:hover{
+transform:scale(1.08);
+box-shadow:0 0 40px rgba(255,46,99,0.9);
+}
+
+section{
+padding:6rem 8vw;
+background:white;
+opacity:0;
+transform:translateY(60px);
+transition:all .9s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+text-align:center;
+font-size:3rem;
+margin-bottom:2rem;
+}
+
+.glass{
+background:#f7f7f7;
+padding:2rem;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:2rem;
+}
+
+.highlight{border:3px solid #ff4d6d;}
+
+.old{
+text-decoration:line-through;
+color:gray;
+}
+
+.new{
+font-size:2.8rem;
+color:#ff2e63;
+font-weight:bold;
+}
+
+.contact-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:2rem;
+}
+
+input,textarea{
+width:100%;
+padding:1rem;
+margin-bottom:1rem;
+border-radius:10px;
+border:none;
+background:#eef1f7;
+}
+
+button{
+background:#ff758c;
+color:white;
+border:none;
+padding:1rem;
+border-radius:30px;
+width:100%;
+cursor:pointer;
+}
+
+.popup{
+position:fixed;
+top:25px;
+right:25px;
+background:#4BB543;
+color:white;
+padding:15px 25px;
+border-radius:12px;
+display:none;
+}
+
+footer{
+text-align:center;
+background:#111;
+color:white;
+padding:2rem;
+}
+
+@media(max-width:768px){
+.heroBrand{font-size:3rem;}
+.contact-box{grid-template-columns:1fr;}
+}
+.slider{
+overflow:hidden;
+margin-top:40px;
+}
+
+.slide-track{
+display:flex;
+width:calc(250px * 14);
+animation:scroll 25s linear infinite;
+}
+
+.slide{
+width:250px;
+margin:0 15px;
+padding:15px 20px;
+background:#111;
+border-radius:15px;
+text-align:center;
+color:white;
+font-weight:500;
+box-shadow:0 0 15px rgba(255,46,99,0.2);
+}
+
+@keyframes scroll{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+a{
+text-decoration:none;
+color:#6c63ff;
+font-weight:500;
+}
+
+a:hover{
+text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+<div class="loader-circle"></div>
+<img src="logo.png" class="loader-logo">
+<div class="progress-bar"><div id="progress"></div></div>
+<p id="percent">0%</p>
+</div>
+
+<div class="popup" id="popup">✅ Design Aura Team will reach you 🙃</div>
+
+<header>
+<nav>
+<div class="logoBox">
+<div class="logoWrapper">
+<img src="logo.png">
+</div>
+<div class="logoText">Design Aura</div>
+</div>
+
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<div class="float">
+<span>✨</span><span>🚀</span><span>💻</span><span>🎨</span><span>🔥</span><span>🌐</span>
+</div>
+
+<div>
+<div class="heroBrand">DESIGN AURA</div>
+<p>Building modern websites for local businesses 🚀</p>
+<a href="#contact" class="cta magnetic">Hire Us</a>
+</div>
+</section>
+
+<section class="services">
+<h2>Everything Your Business Needs. No Compromise.</h2>
+<div class="service-grid">
+
+<div class="service-card">
+<h3>Landing Pages</h3>
+<p>Convert visitors into customers with smart design.</p>
+</div>
+
+<div class="service-card">
+<h3>Business Websites</h3>
+<p>Professional and modern websites that build trust.</p>
+</div>
+
+<div class="service-card">
+<h3>E-commerce</h3>
+<p>Sell products with smooth checkout and great UX.</p>
+</div>
+
+<div class="service-card">
+<h3>Portfolio</h3>
+<p>Showcase your work in a stunning way.</p>
+</div>
+
+<div class="service-card">
+<h3>Restaurant & Bakery</h3>
+<p>Menus, bookings and attractive layouts.</p>
+</div>
+
+<div class="service-card">
+<h3>Startup Websites</h3>
+<p>Modern websites to impress clients and investors.</p>
+</div>
+
+</div>
+<div class="slider">
+  <div class="slide-track">
+
+    <div class="slide">Bakery Websites 🍰</div>
+    <div class="slide">Restaurant Websites 🍽️</div>
+    <div class="slide">E-commerce Stores 🛒</div>
+    <div class="slide">Portfolio Websites 🎨</div>
+    <div class="slide">Startup Landing Pages 🚀</div>
+    <div class="slide">Clinic Websites 🏥</div>
+    <div class="slide">Gym Websites 💪</div>
+    <div class="slide">Real Estate Websites 🏠</div>
+    <div class="slide">Salon Websites 💇</div>
+
+    <!-- repeat for smooth loop -->
+    <div class="slide">Bakery Websites 🍰</div>
+    <div class="slide">Restaurant Websites 🍽️</div>
+    <div class="slide">E-commerce Stores 🛒</div>
+    <div class="slide">Portfolio Websites 🎨</div>
+
+  </div>
+</div>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<div class="glass">
+Hello 👋 I am <b>Ayaan Kapoor</b>, Founder of Design Aura, a student and passionate web designer.  
+Design Aura is my startup idea where I help bakery shops, restaurants and small businesses go online with modern attractive websites.  
+My mission is to provide premium websites at affordable launch pricing so local brands can grow digitally 🌐  
+
+<br><br>
+
+Hello 👋, I’m <b>Daksh Nandan</b>, co-founder of Design Aura.  
+I’m currently pursuing an undergraduate degree in interdisciplinary sciences.  
+
+At Design Aura, I focus on user experience and refining ideas into effective designs.
+</div>
+</section>
+
+<section id="pricing">
+<h2>Launch Offer 🔥</h2>
+<div class="grid">
+<div class="glass highlight">
+<h3>Bakery Website</h3>
+<div class="old">₹18,000</div>
+<div class="new">₹1299</div>
+<p>Only for first 10 customers</p>
+</div>
+
+<div class="glass">
+<h3>Restaurant Website</h3>
+<div class="old">₹22,000</div>
+<div class="new">₹1299</div>
+<p>Only for first 10 customers</p>
+</div>
+
+<div class="glass">
+<h3>Other Business Websites</h3>
+<div class="new">Custom Pricing</div>
+<p>Contact below</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+
+<div class="contact-box glass">
+<div>
+📧 <a href="mailto:designaura7896@gmail.com">designaura7896@gmail.com</a><br><br>
+📱 +91 8142603030
+<br><br>
+📸 <a href="https://www.instagram.com/designaura7896/" target="_blank">
+Instagram @designaura7896
+</a>
+</div>
+
+<div>
+<form action="https://formsubmit.co/designaura7896@gmail.com" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Project Details" required></textarea>
+<input type="hidden" name="_captcha" value="false">
+<button type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Design Aura. All rights reserved. | Designed by Ayaan Kapoor 🚀
+</footer>
+
+<script>
+
+function showPopup(){
+setTimeout(()=>{
+document.getElementById("popup").style.display="block";
+},300);
+setTimeout(()=>{
+document.getElementById("popup").style.display="none";
+},4000);
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll("section").forEach(sec=>{
+observer.observe(sec);
+});
+
+const magnetic=document.querySelector(".magnetic");
+if(magnetic){
+magnetic.addEventListener("mousemove",function(e){
+const rect=this.getBoundingClientRect();
+const x=e.clientX-rect.left-rect.width/2;
+const y=e.clientY-rect.top-rect.height/2;
+this.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
+});
+
+magnetic.addEventListener("mouseleave",function(){
+this.style.transform="translate(0,0)";
+});
+}
+
+// LOADER
+let count=0;
+let loader=document.getElementById("loader");
+let progress=document.getElementById("progress");
+let percent=document.getElementById("percent");
+
+let interval=setInterval(()=>{
+count++;
+progress.style.width=count+"%";
+percent.innerText=count+"%";
+
+if(count>=100){
+clearInterval(interval);
+loader.style.display="none";
+}
+},20);
+
+</script>
+
+</body>
+</html>
